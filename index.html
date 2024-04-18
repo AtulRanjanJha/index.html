@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Background Website</title>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
+            font-size: 2.6vw; /* Base font size for all text elements */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 20px auto;
+            padding: 20px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        p,
+        span,
+        a,
+        button,
+        label,
+        input,
+        textarea {
+            /* Set initial font size for other text elements */
+            font-size: 2.6vw;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .content-mobile {
+            display: none;
+        }
+
+        .content-desktop {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .lottie-container {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .lorem-para {
+            width: 100%;
+            line-height: 1.6;
+        }
+
+        .projects-heading {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .projects-heading::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: white;
+            position: absolute;
+            bottom: -10px;
+            left: calc(50% - 25px); /* Center horizontally */
+        }
+
+        .projects {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .project-column {
+            width: 45%;
+            text-align: center;
+        }
+
+        .project-column img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .project-column h2 {
+            margin-top: 10px;
+        }
+
+        .floating-links {
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            transition: opacity 1s;
+        }
+
+        .floating-links .image-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .floating-links .image-link:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .floating-links .image-link img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+
+        .contact-me {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-me form {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .contact-me form label {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .contact-me form input,
+        .contact-me form textarea {
+            width: 100%;
+            padding: 3px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: black;
+        }
+
+        .contact-me form button {
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Media queries for different screen sizes */
+        @media (max-width: 767px) {
+            /* Adjust font size for smaller screens */
+            body,
+            p,
+            span,
+            a,
+            button,
+            label,
+            input,
+            textarea {
+                font-size: 12pt; /* 12pt on mobile screens */
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            /* Adjust font size for tablets */
+            body,
+            p,
+            span,
+            a,
+            button,
+            label,
+            input,
+            textarea {
+                font-size: 15pt; /* 15pt on tablet screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            /* Adjust font size for desktop screens */
+            body,
+            p,
+            span,
+            a,
+            button,
+            label,
+            input,
+            textarea {
+                font-size: 16pt; /* 16pt on desktop screens */
+            }
+        }
+
+        h1 { 
+            font-weight: bold; 
+            color: #fff;
+            font-size: 80px;
+            text-align: left;
+            margin: 0;
+            padding-top: 40px;
+        }
+
+        a:link {
+            color: rgb(222, 229, 222);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: rgb(59, 44, 223);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        .resume-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .elfsight-app-ed74fdfd-52d9-46f4-8513-cb3a8f54aad0{
+            padding-top: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h0>Hi, I’m Atul Jha </h0>
+    <h1>Welcome to my Portfolio site</h1>
+    <p>Welcome to my digital playground! 👋Hello! I’m a B.Tech student with an insatiable curiosity for technology. While my heart beats for artificial intelligence, my interests extend far beyond its algorithms. From coding late into the night to unraveling the mysteries of data structures, I thrive on challenges. Whether it’s building a web app, optimizing an algorithm, or exploring the cosmos of software development, count me in! When I’m not immersed in code, you’ll find me lost in a good book or contemplating the next adventure. Let’s connect and explore the infinite possibilities that lie ahead! 🚀🌟</p>
+    <!-- Hyperlinks -->
+    <div class="floating-links" id="floating-links">
+        <div class="image-link">
+            <a href="https://github.com/jhaatul001">
+                <img src="C:\Users\atul\OneDrive\Desktop\download (4).png" alt="Github" width="100" height="132">
+            </a>
+        </div>
+        <div class="image-link">
+            <a href="https://www.linkedin.com/in/atul-jha-743098228/">
+                <img src="C:\Users\atul\OneDrive\Desktop\hg.png" alt="linkedin">
+            </a>
+        </div>
+        <div class="image-link">
+            <a href="https://twitter.com/atuljha4747">
+                <img src="C:\Users\atul\OneDrive\Desktop\hj.png" alt="twitter">
+            </a>
+        </div>
+    </div>
+    <button class="resume-button" onclick="window.open('https://drive.google.com/file/d/1cxLLa89Vl3YxMcLYeIF_voszvB430Z6d/view?usp=drive_link', '_blank')">Resume</button>
+
+    <div class="content-desktop">
+        <div class="lorem-para">
+            <h2 style="font-size: larger;"><u>My Toolbox:</u></h2>
+
+            <span><strong>Languages:</strong> Python, CSS, Js, HTML</span> <br>
+            <span><strong>Frameworks:</strong> TensorFlow, PyTorch, Scikit-Learn</span><br>
+            <span><strong>Libraries:</strong> Pandas, NumPy, Matplotlib</span><br>
+            <span><strong>Skills:</strong> Data preprocessing, Model evaluation</span><br>
+        </div>
+        <div class="lottie-container">
+            <!-- Lottie animation -->
+            <dotlottie-player src="https://lottie.host/5202c6e8-0747-4aa2-9fde-b6ec20e1e6d5/rbf4a96fhI.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        </div>
+    </div>
+    <h3><u>Field of my intersts:</u> AI, ML, Dl</h3>
+
+    <div class="content-mobile">
+        <div class="lottie-container">
+            <!-- Lottie animation -->
+            <dotlottie-player src="https://lottie.host/5202c6e8-0747-4aa2-9fde-b6ec20e1e6d5/rbf4a96fhI.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        </div>
+        <div class="lorem-para">
+            <!-- Lorem Ipsum paragraph -->
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et urna libero. Vestibulum rutrum felis sed mauris pharetra, vel lacinia lacus cursus. Phasellus sit amet nulla ac nibh fermentum finibus. Mauris dignissim nulla non arcu malesuada, in bibendum libero porta. Duis id tellus id felis feugiat rutrum. Donec quis urna et ex varius laoreet. Aliquam vel eros id ex euismod posuere. Vestibulum eu felis eu nisi pretium laoreet. Proin elementum velit vel metus fermentum, eu ultrices dui ultrices. Sed lobortis arcu non sapien mollis, eu volutpat mauris fringilla. Sed laoreet magna nec metus suscipit luctus.</p>
+        </div>
+    </div>
+
+    <!-- Projects Heading -->
+    <div class="projects-heading">
+        <h2>Projects</h2>
+    </div>
+
+    <!-- Projects -->
+    <div class="projects">
+        <div class="project-column">
+            <a href="#">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+                <dotlottie-player src="https://lottie.host/bdb45b15-0e1b-4964-b4b3-b08b6c0e8f13/FtGPC0kqDq.json" href="https://github.com/jhaatul001/Machine-learning-project-python-" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                <a href="https://github.com/jhaatul001/Machine-learning-project-python-">Machine Learning</a>
+            </a>
+        </div>
+        <div class="project-column">
+            <a href="#">
+                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+                <dotlottie-player src="https://lottie.host/d3102150-771d-4099-9251-d5769af43938/LjMIQO4D7G.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                <a href="https://github.com/jhaatul001/python-project">Python</a>
+            </a>
+        </div>
+    </div>
+    <!--Linkedin post-->>
+    <br>
+    <hr>
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-ed74fdfd-52d9-46f4-8513-cb3a8f54aad0" data-elfsight-app-lazy></div>
+    <!-- Contact Me Form -->
+    <br>
+    <br>
+    <hr>
+    <div class="contact-me">
+        <h2>Connect with me</h2> 
+        <form action="https://formspree.io/f/xzbnkgnn" method="POST">
+            <label for="name">Your name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Your email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Your message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('scroll', function() {
+        let links = document.querySelectorAll('.image-link');
+        let projectsHeading = document.querySelector('.projects-heading');
+
+        links.forEach(function(link) {
+            if (isElementInView(projectsHeading, link)) {
+                link.style.opacity = '0'; // Fade out the links
+            } else {
+                link.style.opacity = '1'; // Fade in the links
+            }
+        });
+    });
+
+    function isElementInView(element, container) {
+        let bounding = element.getBoundingClientRect();
+        let containerBounding = container.getBoundingClientRect();
+
+        // Check if the bottom of the element is above the container's top
+        return bounding.bottom < containerBounding.top;
+    }
+</script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+</body>
+</html>
