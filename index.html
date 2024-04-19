@@ -3,19 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
+    <title>Black Background Website</title>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <style>
         body {
-            background-color: #0b0b0b;
-            color: white;
+            --bg-color: #090909; /* Default background color */
+            --text-color: white; /* Default text color */
+            --icon-color: var(--text-color); /* Default icon color */
+
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden; /* Prevent horizontal scrollbar */
             font-size: 2.6vw; /* Base font size for all text elements */
+            transition: color 0.5s, background-color 0.5s; /* Smooth transition */
+        }
+        .darkmode {
+            --bg-color: #f7f7f7; /* Background color in dark mode */
+            --text-color: black; /* Text color in dark mode */
+            --icon-color: var(--text-color); /* Icon color in dark mode */
+        }
+        .btn__icon {
+            color: var(--icon-color);
+        }
+        .btn {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 25px;
+            padding: 0.5em;
+            background-color: #aaa6a6;
+            color:rgb(178, 180, 138);
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .1),
+                        inset 0 8px 8px rgba(0, 0, 0, .1),
+                        inset 0 -4px 4px rgba(0, 0, 0, .1);
+            z-index: 999;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
         }
 
+        .btn__indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
+            transition: transform .3s ease;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn__icon-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn__icon {
+            color: var(--icon-color);
+            font-size: 1.5rem;
+        }
+
+        .btn__icon.animated {
+            animation: spin 0.5s;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
         .container {
             width: 100%;
             max-width: 1300px;
@@ -133,7 +200,7 @@
 
         .contact-me form {
             display: inline-block;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(74, 67, 67, 0.1);
             padding: 20px;
             border-radius: 10px;
         }
@@ -141,7 +208,6 @@
         .contact-me form label {
             display: block;
             margin-bottom: 10px;
-            color: white;
         }
 
         .contact-me form input,
@@ -209,7 +275,6 @@
 
         h1 { 
             font-weight: bold; 
-            color: #fff;
             font-size: 80px;
             text-align: left;
             margin: 0;
@@ -256,7 +321,7 @@
         .elfsight-app-ed74fdfd-52d9-46f4-8513-cb3a8f54aad0{
             padding-top: 40px;
         }
-
+       
     </style>
 </head>
 <body>
@@ -283,9 +348,71 @@
             </a>
         </div>
     </div>
-    <!--Drive resume-->
-    <button class="resume-button" onclick="window.open('https://drive.google.com/file/d/1yxTu0SPvbeTzRXhuO5rDbq44gEy48zEX/view?usp=drive_link', '_blank')">Resume</button>
+    <button class="resume-button" onclick="window.open('https://drive.google.com/file/d/1cxLLa89Vl3YxMcLYeIF_voszvB430Z6d/view?usp=drive_link', '_blank')">Resume</button>
+ <!-- ICONS CDN FONTAWESOME -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+ integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+ crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
 
+<div class="container">
+<!-- Your content goes here -->
+</div>
+
+<div class="btn">
+<div class="btn__indicator">
+<div class="btn__icon-container">
+   <i class="btn__icon fa-solid"></i>
+</div>
+</div>
+</div>
+
+<script>
+const body = document.querySelector('body');
+const btn = document.querySelector('.btn');
+const icon = document.querySelector('.btn__icon');
+
+function store(value) {
+localStorage.setItem('darkmode', value);
+}
+
+function load() {
+const darkmode = localStorage.getItem('darkmode');
+
+if (!darkmode) {
+   store(false);
+   icon.classList.add('fa-sun');
+} else if (darkmode == 'true') {
+   body.classList.add('darkmode');
+   icon.classList.add('fa-moon');
+} else if (darkmode == 'false') {
+   icon.classList.add('fa-sun');
+}
+}
+
+load();
+
+btn.addEventListener('click', () => {
+
+body.classList.toggle('darkmode');
+icon.classList.add('animated');
+
+store(body.classList.contains('darkmode'));
+
+if (body.classList.contains('darkmode')) {
+   icon.classList.remove('fa-sun');
+   icon.classList.add('fa-moon');
+} else {
+   icon.classList.remove('fa-moon');
+   icon.classList.add('fa-sun');
+}
+
+setTimeout(() => {
+   icon.classList.remove('animated');
+}, 500)
+})
+</script>
     <div class="content-desktop">
         <div class="lorem-para">
             <h2 style="font-size: larger;"><u>My Toolbox:</u></h2>
@@ -338,7 +465,7 @@
     <!--Linkedin post-->
     <br>
     <hr>
-     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 <div class="elfsight-app-ed74fdfd-52d9-46f4-8513-cb3a8f54aad0" data-elfsight-app-lazy></div>
     <!-- Contact Me Form -->
     <br>
@@ -382,18 +509,7 @@
 </script>
 <script type="module">
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
 </script>
 
 </body>
