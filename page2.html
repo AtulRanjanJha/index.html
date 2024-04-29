@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Title</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden; /* Hide horizontal scrollbar */
+      background-color: #090909; /* Dark background color */
+      color: #ffffff; /* White font color */
+    }
+
+    .projects-container {
+      position: relative; /* Set relative position for absolute arrow buttons */
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      margin-bottom: 50px; /* Added space for floating navbar */
+      overflow-x: auto; /* Enable horizontal scroll */
+      scrollbar-width: none; /* Hide scrollbar in Firefox */
+      -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+      padding-top: 60px;
+    }
+
+    .project-column {
+      flex: 0 0 auto; /* Non-flexible, auto-sizing */
+      text-align: center;
+      width: 300px; /* Fixed width for project tiles */
+    }
+
+    .project-column a {
+      text-decoration: none;
+      color: #ffffff;
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .project-column a:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px; /* Fixed height for project tiles */
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-title {
+      padding: 20px;
+      background-color: #333333;
+    }
+
+    .project-title h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .project-description {
+      padding: 10px;
+      background-color: #333333;
+      overflow-y: hidden; /* Enable vertical scroll if content exceeds height */
+      max-height: 400px; /* Max height for description section */
+    }
+
+    .project-description p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .floating-navbar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(128, 128, 128, 0.5); /* More transparent grey background color */
+      padding: 15px 20px; /* Increased padding from top and bottom */
+      border-radius: 30px; /* More capsule-shaped */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+      z-index: 1000; /* Ensure it's above the animation container */
+    }
+
+    .floating-navbar a {
+      color: #ffffff; /* White text color */
+      text-decoration: none; /* Remove underline */
+      margin: 0 10px; /* Add margin between links */
+      font-size: small;
+    }
+
+    .floating-navbar a.active {
+      background-color: #f5f2f2; /* Black background color */
+      color: #0b0b0b; /* White font color */
+      border-radius: 80px; /* More capsule-shaped */
+      padding: 10px 20px; /* Adjust padding */
+    }
+
+    .floating-navbar a:hover {
+      text-decoration: underline; /* Add underline on hover */
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    .content-mobile {
+      display: none;
+    }
+
+    .content-desktop {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    /* Hide scrollbar */
+    .projects-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Arrow buttons for scrolling */
+    .scroll-arrow {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(170, 169, 169, 0.5); /* More transparent grey background color */
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1001; /* Ensure it's above the floating navbar */
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-arrow:hover {
+      background-color: rgba(255, 255, 255, 0.7); /* Lighter background color on hover */
+    }
+
+    .scroll-arrow.left {
+      left: 20px;
+      top: calc(50% - 100px); /* Adjust position */
+      transform: translateY(-50%);
+      opacity: 1;
+    }
+
+    .scroll-arrow.right {
+      right: 20px;
+      top: calc(50% - 100px); /* Adjust position */
+      transform: translateY(-50%);
+      opacity: 1;
+    }
+
+    /* Hide arrows when at the end */
+    .projects-container.left-end .scroll-arrow.left,
+    .projects-container.right-end .scroll-arrow.right {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; margin-top: 40px; font-size: 50px;">Projects</h1>
+  <!-- Projects -->
+  <div class="projects-container">
+    <!-- Project 1 -->
+    <div class="project-column">
+      <a href="https://github.com/jhaatul001/Machine-learning-project-python-/tree/main/Boston_Housing_price_prediction">
+        <div class="project-image">
+         <img src="C:\Users\atul\OneDrive\Desktop\148332938-4e66d4ca-2d16-474f-8482-340aef6a48d0.png" alt="Project Image">
+         </div>
+        <div class="project-title">
+          <h2>House Price Prediction</h2>
+        </div>
+        <div class="project-description">
+          <p>The House Price Prediction System utilizes machine learning technology, specifically regression algorithms such as linear regression, decision trees, or random forests, to analyze the Boston housing dataset. Through data preprocessing, feature engineering, and model training, the system generates accurate predictions of house prices based on input features such as crime rate, property tax rate, and number of rooms. The conclusion provides users with estimated house prices, aiding homebuyers, real estate agents, and property investors in making informed decisions.</p>
+        </div>
+      </a>
+    </div>
+    <!-- Project 2 -->
+    <div class="project-column">
+      <a href="https://github.com/jhaatul001/Machine-learning-project-python-/tree/main/Image-Based%20Number%20Prediction">
+        <div class="project-image">
+          <img src="C:\Users\atul\OneDrive\Desktop\7-Roulette-Number-Prediction-Methods-Deciphered.webp" alt="Project Image">
+        </div>
+        <div class="project-title">
+          <h2>Number Prediction from Image</h2>
+        </div>
+        <div class="project-description">
+          <p>The Number Prediction System from Image employs Convolutional Neural Networks (CNNs) to analyze handwritten digit images. By preprocessing the data and training the CNN models on labeled datasets like MNIST or SVHN, the system learns to recognize patterns and features within the images, enabling accurate prediction of numerical values. This facilitates applications in optical character recognition (OCR) and digit recognition tasks.          </p>
+        </div>
+      </a>
+    </div>
+    <!-- Repeat the above project columns for six more times -->
+    <!-- Project 3 -->
+    <div class="project-column">
+      <a href="https://github.com/jhaatul001/Machine-learning-project-python-/tree/main/ipl_prediction">
+        <div class="project-image">
+          <img src="C:\Users\atul\OneDrive\Desktop\images (2).jpeg" alt="Project Image">
+        </div>
+        <div class="project-title">
+          <h2>IPL Prediction</h2>
+        </div>
+        <div class="project-description">
+          <p>The IPL Prediction System utilizes statistical analysis and machine learning algorithms to forecast match outcomes and player performances in the Indian Premier League (IPL). By analyzing historical match data, team compositions, player statistics, pitch conditions, and other relevant factors, the system predicts the probabilities of different outcomes for upcoming matches. It helps cricket enthusiasts and betting enthusiasts make informed decisions about match predictions and player performances, enhancing their overall IPL experience.</p>
+        </div>
+      </a>
+    </div>
+    <!-- Project 4 -->
+    <div class="project-column">
+      <a href="https://github.com/jhaatul001/Machine-learning-project-python-/tree/main/Movie_Recommender">
+        <div class="project-image">
+          <img src="C:\Users\atul\OneDrive\Desktop\download (2).jpeg" alt="Project Image">
+        </div>
+        <div class="project-title">
+          <h2>Movie Recommender</h2>
+        </div>
+        <div class="project-description">
+          <p>The Movie Recommender System utilizes collaborative filtering algorithms, such as user-based and item-based collaborative filtering, to generate movie recommendations. These algorithms analyze user ratings and similarities between movies to provide personalized suggestions. Additionally, it may incorporate content-based filtering, which examines movie features like genre, actors, and plot summaries to make recommendations.          </p>
+        </div>
+      </a>
+    </div>
+    <!-- Project 5 -->
+    <div class="project-column">
+      <a href="https://github.com/jhaatul001/Machine-learning-project-python-/tree/main/Breast%20cancer">
+        <div class="project-image">
+          <img src="C:\Users\atul\OneDrive\Desktop\download (3).jpeg" alt="Project Image">
+        </div>
+        <div class="project-title">
+          <h2>Breast Cancer detection</h2>
+        </div>
+        <div class="project-description">
+          <p>The Breast Cancer Detection System utilizes machine learning algorithms such as Support Vector Machines (SVM) or Artificial Neural Networks (ANN) to analyze medical imaging data, particularly mammograms. By preprocessing the images and extracting relevant features, these algorithms can classify the images into benign or malignant categories, aiding in the early detection of breast cancer. The system aims to improve diagnostic accuracy and assist healthcare professionals in making informed decisions regarding patient treatment and care.          </p>
+        </div>
+      </a>
+    </div>
+    <!-- Project 6 -->
+    <div class="project-column">
+      <a href="#">
+        <div class="project-image">
+          <img src="IMAGE_URL" alt="Project Image">
+        </div>
+        <div class="project-title">
+          <h2>Project 6</h2>
+        </div>
+        <div class="project-description">
+          <p>Description of Project 6.</p>
+        </div>
+      </a>
+    </div>
+    <!-- End of additional project columns -->
+  </div>
+
+  <!-- Left scroll arrow -->
+  <div class="scroll-arrow left">&lt;</div>
+
+  <!-- Right scroll arrow -->
+  <div class="scroll-arrow right">&gt;</div>
+
+  <!-- Floating navigation bar -->
+  <div class="floating-navbar">
+    <a href="index.html">Home</a>
+    <a href="page2.html" class="active">Projects</a>
+    <a href="page1.html">About Me</a>
+  </div>
+
+  <script>
+    // Get the project container and arrow buttons
+    const projectsContainer = document.querySelector('.projects-container');
+    const scrollArrowLeft = document.querySelector('.scroll-arrow.left');
+    const scrollArrowRight = document.querySelector('.scroll-arrow.right');
+
+    // Add event listener to left arrow button
+    scrollArrowLeft.addEventListener('click', function() {
+      projectsContainer.scrollLeft -= 200; // Adjust scroll distance as needed
+    });
+
+    // Add event listener to right arrow button
+    scrollArrowRight.addEventListener('click', function() {
+      projectsContainer.scrollLeft += 200; // Adjust scroll distance as needed
+    });
+
+    // Update visibility of arrow buttons based on scroll position
+    projectsContainer.addEventListener('scroll', function() {
+      const scrollableWidth = projectsContainer.scrollWidth - projectsContainer.clientWidth;
+      scrollArrowLeft.style.opacity = projectsContainer.scrollLeft <= 0 ? '0' : '1';
+      scrollArrowRight.style.opacity = projectsContainer.scrollLeft >= scrollableWidth ? '0' : '1';
+    });
+
+    // Check if at the beginning or end to hide corresponding arrow
+    projectsContainer.addEventListener('scroll', function() {
+      if (projectsContainer.scrollLeft === 0) {
+        projectsContainer.classList.add('left-end');
+      } else {
+        projectsContainer.classList.remove('left-end');
+      }
+
+      if (projectsContainer.scrollLeft + projectsContainer.clientWidth >= projectsContainer.scrollWidth) {
+        projectsContainer.classList.add('right-end');
+      } else {
+        projectsContainer.classList.remove('right-end');
+      }
+    });
+  </script>
+</body>
+</html>
