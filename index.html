@@ -3,172 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Background Website</title>
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <title>Your Personal Website</title>
     <style>
+        /* Add your CSS styles here */
         body {
-            --bg-color: #090909; /* Default background color */
-            --text-color: white; /* Default text color */
-            --icon-color: var(--text-color); /* Default icon color */
-
-            background-color: var(--bg-color);
-            color: var(--text-color);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scrollbar */
-            font-size: 2.6vw; /* Base font size for all text elements */
-            transition: color 0.5s, background-color 0.5s; /* Smooth transition */
-        }
-        .darkmode {
-            --bg-color: #f7f7f7; /* Background color in dark mode */
-            --text-color: black; /* Text color in dark mode */
-            --icon-color: var(--text-color); /* Icon color in dark mode */
-        }
-        .btn__icon {
-            color: var(--icon-color);
-        }
-        .btn {
-            position: fixed;
-            top: 15px;
-            left: 20px;
-            width: 30px;
-            height: 30px;
-            border-radius: 25px;
-            padding: 0.5em;
-            background-color: #aaa6a6;
-            color:rgb(178, 180, 138);
-            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .1),
-                        inset 0 8px 8px rgba(0, 0, 0, .1),
-                        inset 0 -4px 4px rgba(0, 0, 0, .1);
-            z-index: 999;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .btn__indicator {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            position: absolute;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
-            transition: transform .3s ease;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #000000; /* Set background color to black */
+            color: #ffffff; /* Set text color to white */
+            overflow-x: hidden;
         }
         
-        .btn__icon-container {
-            width: 100%;
-            height: 100%;
+        .container {
+    width: calc(100% - 40px); /* Adjusted width to account for padding */
+    padding: 20px; /* Equal padding on all sides */
+    position: relative; /* Added position relative */
+}
+
+
+        .top-section {
+            padding: 10px; /* Adjust padding */
+            border: 4px solid #000000; /* Dark black border */
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 20px; /* Add margin at the bottom */
+            position: fixed; /* Fixed position */
+            top: 0; /* Align at the top */
+            left: 0; /* Align at the left */
+            width: calc(100% - 40px); /* Full width minus padding */
+            background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+            z-index: 999; /* Ensure it's above other elements */
+        }
+
+        .top-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
         }
 
-        .btn__icon {
-            color: var(--icon-color);
-            font-size: 1.5rem;
+        h5 {
+            margin: 0; /* Remove default margin */
+            color: #ffffff; /* White text color */
+            white-space: nowrap; /* Prevent line break */
         }
 
-        .btn__icon.animated {
-            animation: spin 0.5s;
+        .top-para {
+            text-align: center; /* Align center */
+            margin: 0;
+            margin-left: 20px; /* Add some margin to separate from h5 */
         }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
+        /* Styling for the top paragraph hyperlink */
+        .top-para a {
+            color: inherit; /* Inherit the text color */
+            text-decoration: none; /* Remove underline */
+            cursor: pointer; /* Set cursor to pointer */
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+
+        /* Change color on hover */
+        .top-para a:hover {
+            color: inherit; /* Inherit the text color */
+        }
+
+        .contact-button {
+            padding: 7px 20px; /* Padding top and bottom 10px, left and right 20px */
+            border: 2px solid #ffffff; /* White outline */
+            background-color: #000000; /* Black background */
+            color: #ffffff; /* White text color */
+            cursor: pointer;
+            border-radius: 20px; /* Capsule shape */
+            margin-left: auto; /* Push contact button to the right */
+        }
+
+        p.biography {
+            margin-top: 500px; /* Adjust margin top */
+            text-align: left; /* Align left */
+            margin-left:10px;
+        }
+
+        /* Additional style for Lorem Ipsum paragraphs */
+        .lorem-para {
+            margin-top: 40px; /* Add space between Lorem Ipsum paragraphs */
+            text-align: left; /* Align left */
+        }
+
+        .floating-navbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(128, 128, 128, 0.5); /* More transparent grey background color */
+            padding: 15px 20px; /* Increased padding from top and bottom */
+            border-radius: 30px; /* More capsule-shaped */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+            z-index: 1000; /* Ensure it's above the animation container */
+        }
+
+        .floating-navbar a {
+            color: #ffffff; /* White text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 10px; /* Add margin between links */
+        }
+
+        .floating-navbar a.active {
+            background-color: #ffffff; /* White background color */
+            color: #000000; /* Black font color */
+            border-radius: 50px; /* More capsule-shaped */
+            padding: 10px 20px; /* Adjust padding */
+        }
+
+        .floating-navbar a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        .animation-container {
+            position: relative; /* Change to relative position */
+            padding-top: 50px; /* Add padding to create space above animations */
+            width: 100%; /* Set width to cover the entire page */
+            height: 100%; /* Set height to cover the entire page */
+            overflow: hidden; /* Hide overflow */
+            display: flex; /* Display items in a row */
+            flex-direction: column; /* Arrange items vertically */
+            justify-content: center; /* Center items vertically */
+            align-items: center; /* Center items horizontally */
+            z-index: -1; /* Ensure it's behind the floating navbar */
+        }
+
+        .animated-text {
+            line-height: 1.5; /* Reduce line height */
+            color: #fffafa; /* Set text color */
+            white-space: nowrap; /* Prevent text wrapping */
+            animation: moveText linear infinite; /* Set animation properties */
+            margin: 0; /* Remove default margin */
+            position: relative; /* Enable positioning */
+            width: 100%; /* Set width to prevent horizontal overflow */
+        }
+
+        .animated-text1 {
+            line-height: 1.5; /* Reduce line height */
+            color: #fffafa; /* Set text color */
+            white-space: nowrap; /* Prevent text wrapping */
+            animation: moveText1 linear infinite; /* Set animation properties */
+            margin: 0; /* Remove default margin */
+            position: relative; /* Enable positioning */
+            width: 100%; /* Set width to prevent horizontal overflow */
+        }
+        .mute-button {
+      position: absolute;
+      top: 20%;
+      left: 90%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(93, 92, 92, 0.7);
+      color: #000;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    /* Style for the video container */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    /* Style for the video element */
+    video {
+      width: 100%;
+      height: auto;
+    }
+        /* Keyframes for animation */
+        @keyframes moveText {
+            0% {
+                transform: translateX(-50%); /* Start from right side */
+            }
+            100% {
+                transform: translateX(-200%); /* Move to left side */
             }
         }
-        .container {
-            width: 100%;
-            max-width: 1300px;
-            margin: 20px auto;
-            padding: 20px;
-            position: relative;
-            box-sizing: border-box;
+        @keyframes moveText1 {
+            0% {
+                transform: translateX(-30%); /* Start from right side */
+            }
+            100% {
+                transform: translateX(-200%); /* Move to left side */
+            }
         }
 
-        p,
-        span,
-        a,
-        button,
-        label,
-        input,
-        textarea {
-            /* Set initial font size for other text elements */
-            font-size: 2.6vw;
+        /* Set different animation durations for each paragraph */
+        .animated-text:nth-child(1) {
+            animation-duration: 6s; /* 50 seconds */
         }
 
-        .content {
-            display: flex;
-            flex-direction: column;
-            margin-top: 20px;
+        .animated-text1:nth-child(2) {
+            animation-duration: 10s; /* 100 seconds */
         }
 
-        .content-mobile {
-            display: none;
+        .animated-text:nth-child(3) {
+            animation-duration: 22s; /* 25 seconds */
         }
 
-        .content-desktop {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+        .animated-text1:nth-child(4) {
+            animation-duration: 6s; /* 30 seconds */
         }
 
-        .lottie-container {
-            width: 100%;
-            height: 300px;
-            margin-bottom: 20px;
+        .animated-text:nth-child(5) {
+            animation-duration: 5s; /* 20 seconds */
         }
 
-        .lorem-para {
-            width: 100%;
-            line-height: 1.6;
+        .animated-text1:nth-child(6) {
+            animation-duration: 20s; /* 100 seconds */
         }
 
-        .projects-heading {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
+        .animated-text:nth-child(7) {
+            animation-duration: 50s; /* 50 seconds */
         }
 
-        .projects-heading::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background-color: white;
-            position: absolute;
-            bottom: -10px;
-            left: calc(50% - 25px); /* Center horizontally */
+        .animated-text1:nth-child(8) {
+            animation-duration: 5s; /* 60 seconds */
         }
 
-        .projects {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+        .animated-text:nth-child(9) {
+            animation-duration: 50s; /* 50 seconds */
         }
-
-        .project-column {
-            width: 45%;
-            text-align: center;
-        }
-
-        .project-column img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 5px;
-        }
-
-        .project-column h2 {
-            margin-top: 10px;
-        }
-
         .floating-links {
             position: fixed;
             top: 50%;
@@ -190,327 +249,151 @@
         .floating-links .image-link img {
             width: 50px;
             height: 50px;
-            border-radius: 5px;
+            border-radius: 25px;
         }
-
-        .contact-me {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .contact-me form {
-            display: inline-block;
-            background-color: rgba(74, 67, 67, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .contact-me form label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .contact-me form input,
-        .contact-me form textarea {
-            width: 100%;
-            padding: 3px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.5);
-            color: black;
-        }
-
-        .contact-me form button {
-            padding: 10px 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #3498db;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* Media queries for different screen sizes */
-        @media (max-width: 767px) {
-            /* Adjust font size for smaller screens */
-            body,
-            p,
-            span,
-            a,
-            button,
-            label,
-            input,
-            textarea {
-                font-size: 12pt; /* 12pt on mobile screens */
-            }
-        }
-
-        @media (min-width: 768px) and (max-width: 1023px) {
-            /* Adjust font size for tablets */
-            body,
-            p,
-            span,
-            a,
-            button,
-            label,
-            input,
-            textarea {
-                font-size: 15pt; /* 15pt on tablet screens */
-            }
-        }
-
-        @media (min-width: 1024px) {
-            /* Adjust font size for desktop screens */
-            body,
-            p,
-            span,
-            a,
-            button,
-            label,
-            input,
-            textarea {
-                font-size: 16pt; /* 16pt on desktop screens */
-            }
-        }
-
-        h1 { 
-            font-weight: bold; 
-            font-size: 80px;
-            text-align: left;
-            margin: 0;
-            padding-top: 40px;
-        }
-
-        a:link {
-            color: rgb(222, 229, 222);
-            background-color: transparent;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: rgb(59, 44, 223);
-            background-color: transparent;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: red;
-            background-color: transparent;
-            text-decoration: underline;
-        }
-
-        a:active {
-            color: yellow;
-            background-color: transparent;
-            text-decoration: underline;
-        }
-
-        .resume-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 999;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .elfsight-app-ed74fdfd-52d9-46f4-8513-cb3a8f54aad0{
-            padding-top: 40px;
-        }
-       
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="top-section">
+            <div class="top-container">
+                <h5>Atul Ranjan Jha</h5> <!-- Single line -->
+                <div class="top-para">
+                </div>
+                <button class="contact-button" onclick="composeEmail()">Contact</button>
+                <script>
+                    function composeEmail(){
+                        var to= 'atuljha4747@gmail.com';
+                        var subject ='Subject of Your Email';
+                        var body ='Message';
+                        var mailtoLink='https://mail.google.com/mail/?view=cm&to='+ to +'&su='+subject+'&body='+body;
+                        window.open(mailtoLink);
+                    }
+                </script>
+            </div>
+        </div>
+        
+        <p class="biography" style="font-size:20px;">Hi, I’m Atul Jha 👋</p>
+        <div class="projects-heading">
+            <h1 style="font-size: 180px; margin-top: 20px;">Portfolio</h1>
+        </div> <!-- Adjusted font size and margin -->
+        <p style="margin-top: 20px;">“You are only entitled to the action, never to its fruits.”  ― Bhagavad Gita</p>
+        <ul style="margin-top: 10px;">
+        </ul>
 
-<div class="container">
-    <h0>Hi, I’m Atul Jha </h0>
-    <h1>Welcome to my Portfolio site</h1>
-    <p>Welcome to my digital playground! 👋Hello! I’m a B.Tech student with an insatiable curiosity for technology. While my heart beats for artificial intelligence, my interests extend far beyond its algorithms. From coding late into the night to unraveling the mysteries of data structures, I thrive on challenges. Whether it’s building a web app, optimizing an algorithm, or exploring the cosmos of software development, count me in! When I’m not immersed in code, you’ll find me lost in a good book or contemplating the next adventure. Let’s connect and explore the infinite possibilities that lie ahead! 🚀🌟</p>
-    <!-- Hyperlinks -->
-    <div class="floating-links" id="floating-links">
-        <div class="image-link">
-            <a href="https://github.com/jhaatul001">
-                <img src="download (4).png" alt="Github" width="100" height="132">
-            </a>
-        </div>
-        <div class="image-link">
-            <a href="https://www.linkedin.com/in/atul-jha-743098228/">
-                <img src="hg.png" alt="linkedin">
-            </a>
-        </div>
-        <div class="image-link">
-            <a href="https://twitter.com/atuljha4747">
-                <img src="hj.png" alt="twitter">
-            </a>
-        </div>
+        <div class="floating-links" id="floating-links">
+            <div class="image-link">
+                <a href="https://github.com/jhaatul001">
+                    <img src="download (4).png" alt="Github" width="100" height="132">
+                </a>
+            </div>
+            <div class="image-link">
+                <a href="https://www.linkedin.com/in/atul-jha-743098228/">
+                    <img src="hg.png" alt="linkedin">
+                </a>
+            </div>
+            <div class="image-link">
+                <a href="https://twitter.com/atuljha4747">
+                    <img src="hj.png" alt="twitter">
+                </a>
+            </div>
+        </div>    
     </div>
-    <button class="resume-button" onclick="window.open('https://drive.google.com/file/d/1cxLLa89Vl3YxMcLYeIF_voszvB430Z6d/view?usp=drive_link', '_blank')">Resume</button>
- <!-- ICONS CDN FONTAWESOME -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
- integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
- crossorigin="anonymous" referrerpolicy="no-referrer"/>
-</head>
-<body>
-
-<div class="container">
-<!-- Your content goes here -->
-</div>
-
-<div class="btn">
-<div class="btn__indicator">
-<div class="btn__icon-container">
-   <i class="btn__icon fa-solid"></i>
-</div>
-</div>
-</div>
-
-<script>
-const body = document.querySelector('body');
-const btn = document.querySelector('.btn');
-const icon = document.querySelector('.btn__icon');
-
-function store(value) {
-localStorage.setItem('darkmode', value);
-}
-
-function load() {
-const darkmode = localStorage.getItem('darkmode');
-
-if (!darkmode) {
-   store(false);
-   icon.classList.add('fa-sun');
-} else if (darkmode == 'true') {
-   body.classList.add('darkmode');
-   icon.classList.add('fa-moon');
-} else if (darkmode == 'false') {
-   icon.classList.add('fa-sun');
-}
-}
-
-load();
-
-btn.addEventListener('click', () => {
-
-body.classList.toggle('darkmode');
-icon.classList.add('animated');
-
-store(body.classList.contains('darkmode'));
-
-if (body.classList.contains('darkmode')) {
-   icon.classList.remove('fa-sun');
-   icon.classList.add('fa-moon');
-} else {
-   icon.classList.remove('fa-moon');
-   icon.classList.add('fa-sun');
-}
-
-setTimeout(() => {
-   icon.classList.remove('animated');
-}, 500)
-})
-</script>
-    <div class="content-desktop">
-        <div class="lorem-para">
-            <h2 style="font-size: larger;"><u>My Toolbox:</u></h2>
-
-            <span><strong>Languages:</strong> Python, CSS, Js, HTML</span> <br>
-            <span><strong>Frameworks:</strong> TensorFlow, PyTorch, Scikit-Learn</span><br>
-            <span><strong>Libraries:</strong> Pandas, NumPy, Matplotlib</span><br>
-            <span><strong>Skills:</strong> Data preprocessing, Model evaluation</span><br>
-        </div>
-        <div class="lottie-container">
-            <!-- Lottie animation -->
-            <dotlottie-player src="https://lottie.host/5202c6e8-0747-4aa2-9fde-b6ec20e1e6d5/rbf4a96fhI.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
-        </div>
+    <div class="floating-navbar">
+        <a href="pot.html">Home</a>
+        <a href="page2.html">Projects</a>
+        <a href="page1.html">About Me</a>
     </div>
-    <h3><u>Field of my intersts:</u> AI, ML, Dl</h3>
-
-    <div class="content-mobile">
-        <div class="lottie-container">
-            <!-- Lottie animation -->
-            <dotlottie-player src="https://lottie.host/5202c6e8-0747-4aa2-9fde-b6ec20e1e6d5/rbf4a96fhI.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
-        </div>
-        <div class="lorem-para">
-            <!-- Lorem Ipsum paragraph -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et urna libero. Vestibulum rutrum felis sed mauris pharetra, vel lacinia lacus cursus. Phasellus sit amet nulla ac nibh fermentum finibus. Mauris dignissim nulla non arcu malesuada, in bibendum libero porta. Duis id tellus id felis feugiat rutrum. Donec quis urna et ex varius laoreet. Aliquam vel eros id ex euismod posuere. Vestibulum eu felis eu nisi pretium laoreet. Proin elementum velit vel metus fermentum, eu ultrices dui ultrices. Sed lobortis arcu non sapien mollis, eu volutpat mauris fringilla. Sed laoreet magna nec metus suscipit luctus.</p>
-        </div>
+    <div class="animation-container">
+        <h1 class="animated-text"><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas, similique. Dolorum nihil quo temporibus? Omnis velit nostrum animi necessitatibus at illum adipisci fugit repudiandae, porro aperiam itaque maiores hic consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, numquam. Magni amet maiores eius cum! Nam, eveniet. Esse atque soluta vel commodi exercitationem a error magni, at cupiditate perferendis voluptas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil id cumque, voluptate esse, voluptatibus obcaecati quidem excepturi magni, eius quasi non. Quidem, aperiam reprehenderit porro quibusdam molestiae unde illum eveniet.</h1>
+        <h2 class="animated-text1">Ut enim ad minim veniam, quis nostrud exercitation <strong>ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque</strong> vel consequuntur, cumque temporibus facere ullam, facilis, enim cum tempore numquam autem dicta voluptates tempora. Iste fuga eius possimus placeat! Perferendis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis eos accusantium aspernatur, quam officia magni id adipisci molestiae iure! Repellendus necessitatibus ea numquam sed! Ex commodi rem aspernatur ratione?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium libero rerum sed adipisci. Amet quasi consequatur placeat a dolor harum nemo repudiandae quis, voluptatum explicabo soluta voluptatibus distinctio accusamus pariatur. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus natus quam nisi atque soluta repudiandae nemo vel excepturi amet, sit fugiat quidem beatae et, minus incidunt earum sapiente iure consectetur.</h2>
+        <p class="animated-text"><em>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis neque tenetur, recusandae soluta, odio corporis earum voluptates aut qui corrupti architecto, sit dignissimos consectetur. Totam soluta sint officia rerum optio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste rem est nam voluptatum hic numquam corrupti provident culpa tempore aspernatur dolore nisi explicabo adipisci, a exercitationem tempora quo aut deserunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae hic eos alias, repellendus dolores accusamus? Numquam recusandae voluptatum possimus, deserunt expedita inventore repudiandae illum harum quia enim officia ducimus in? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse temporibus aliquid amet quis hic, eaque aut tempore totam iure architecto reprehenderit sit! Porro, vel debitis! Incidunt cum odio laborum voluptatem.</em></p>
+        <h class="animated-text1">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ab quaerat iure perspiciatis esse eum? Excepturi quas, nihil saepe laudantium iure incidunt, commodi explicabo magnam dicta cumque maxime voluptate tenetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed suscipit illum corrupti autem rem fuga modi exercitationem ea magnam molestias magni placeat, vero deserunt assumenda aliquid at debitis recusandae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, laudantium saepe sequi atque facilis voluptatem et recusandae eaque modi, earum quam ab blanditiis placeat debitis! Architecto laudantium animi explicabo est. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus beatae est illum sit, id quisquam quae accusantium quo quod nihil! Expedita ut in animi repudiandae incidunt eos eum consectetur itaque! Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia vitae laborum iusto corrupti. Iusto mollitia voluptatem eligendi possimus rem cumque placeat delectus quod natus? Nesciunt similique omnis quaerat odio?</h>
+        <h2 class="animated-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis libero et leo scelerisque, eget convallis odio faucibus. Vestibulum sed consequat justo. Pellentesque quis mauris quis sem pharetra lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui magnam soluta cupiditate explicabo expedita similique repellendus commodi excepturi, eaque sed odio! Dolores, id qui sequi rerum animi alias excepturi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolore magnam odio, recusandae vitae, ipsa dolor placeat omnis a sapiente impedit. Aperiam repellat corporis neque dolor officiis, placeat reprehenderit accusamus?\ Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur officiis, doloremque animi eligendi accusantium modi tempore voluptas earum sapiente distinctio! Eligendi sint ex doloremque magnam amet quidem optio ipsum excepturi?</h2>
+        <p class="animated-text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis libero et leo scelerisque, eget convallis odio faucibus. Vestibulum sed consequat justo. Pellentesque quis mauris quis sem pharetra lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui magnam soluta cupiditate explicabo expedita similique repellendus commodi excepturi, eaque sed odio! Dolores, id qui sequi rerum animi alias excepturi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolore magnam odio, recusandae vitae, ipsa dolor placeat omnis a sapiente impedit. Aperiam repellat corporis neque dolor officiis, placeat reprehenderit accusamus?\Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint repellat reiciendis, voluptate atque id quia quas, non corporis nostrum quae nesciunt ea illum ab laborum. Dolor blanditiis voluptatem eos maiores!</p>
+        <h2 class="animated-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis libero et leo scelerisque, eget convallis odio faucibus. Vestibulum sed consequat justo. Pellentesque quis mauris quis sem pharetra lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga qui magnam soluta cupiditate explicabo expedita similique repellendus commodi excepturi, eaque sed odio! Dolores, id qui sequi rerum animi alias excepturi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolore magnam odio, recusandae vitae, ipsa dolor placeat omnis a sapiente impedit. Aperiam repellat corporis neque dolor officiis, placeat reprehenderit accusamus?\Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis labore a eaque, doloremque obcaecati magnam animi ullam soluta quae eum voluptate ut dolor expedita nam atque et iste possimus adipisci.</h2>
     </div>
+    <script>
+        // Get all the navigation links
+    var links = document.querySelectorAll('.floating-navbar a');
 
-    <!-- Projects Heading -->
-    <div class="projects-heading">
-        <h2>Projects</h2>
-    </div>
-
-    <!-- Projects -->
-    <div class="projects">
-        <div class="project-column">
-            <a href="#">
-                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-                <dotlottie-player src="https://lottie.host/bdb45b15-0e1b-4964-b4b3-b08b6c0e8f13/FtGPC0kqDq.json" href="https://github.com/jhaatul001/Machine-learning-project-python-" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
-                <a href="https://github.com/jhaatul001/Machine-learning-project-python-">Machine Learning</a>
-            </a>
-        </div>
-        <div class="project-column">
-            <a href="#">
-                <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-                <dotlottie-player src="https://lottie.host/d3102150-771d-4099-9251-d5769af43938/LjMIQO4D7G.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
-                <a href="https://github.com/jhaatul001/python-project">Python</a>
-            </a>
-        </div>
-    </div>
-    <!--Linkedin post-->
-    <br>
-    <hr>
-    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-<div class="elfsight-app-ed74fdfd-52d9-46f4-8513-cb3a8f54aad0" data-elfsight-app-lazy></div>
-    <!-- Contact Me Form -->
-    <br>
-    <br>
-    <hr>
-    <div class="contact-me">
-        <h2>Connect with me</h2> 
-        <form action="https://formspree.io/f/xzbnkgnn" method="POST">
-            <label for="name">Your name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Your email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Your message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </div>
-</div>
-
-<script>
-    window.addEventListener('scroll', function() {
-        let links = document.querySelectorAll('.image-link');
-        let projectsHeading = document.querySelector('.projects-heading');
-
-        links.forEach(function(link) {
-            if (isElementInView(projectsHeading, link)) {
-                link.style.opacity = '0'; // Fade out the links
-            } else {
-                link.style.opacity = '1'; // Fade in the links
-            }
-        });
+// Add click event listeners to each link
+links.forEach(function(link, index) {
+  link.addEventListener('click', function(event) {
+    // Remove the "active" class from all links
+    links.forEach(function(link) {
+      link.classList.remove('active');
     });
 
-    function isElementInView(element, container) {
-        let bounding = element.getBoundingClientRect();
-        let containerBounding = container.getBoundingClientRect();
+    // Add the "active" class to the clicked link
+    this.classList.add('active');
 
-        // Check if the bottom of the element is above the container's top
-        return bounding.bottom < containerBounding.top;
-    }
-</script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  
-</script>
+    // Store the index of the clicked link in local storage
 
+  });
+});
+
+// Check if there is an active index stored in local storage
+var activeIndex = localStorage.getItem('activeIndex');
+
+if (activeIndex !== null) {
+  // Add the "active" class to the link corresponding to the stored index
+  links[activeIndex].classList.add('active');
+}
+      </script>
+      <script>
+        window.addEventListener('scroll', function() {
+            let links = document.querySelectorAll('.image-link');
+            let projectsHeading = document.querySelector('.projects-heading');
+    
+            links.forEach(function(link) {
+                if (isElementInView(projectsHeading, link)) {
+                    link.style.opacity = '0'; // Fade out the links
+                } else {
+                    link.style.opacity = '1'; // Fade in the links
+                }
+            });
+        });
+    
+        function isElementInView(element, container) {
+            let bounding = element.getBoundingClientRect();
+            let containerBounding = container.getBoundingClientRect();
+    
+            // Check if the bottom of the element is above the container's top
+            return bounding.bottom < containerBounding.top;
+        }
+    </script>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <!-- Add the video element here -->
+      <div class="video-container">
+        <!-- Video with autoplay and muted by default -->
+        <video autoplay muted loop>
+          <source src="C:\Users\atul\OneDrive\Documents\Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+          <!-- Add additional source elements for different video formats if needed -->
+          Your browser does not support the video tag.
+        </video>
+    
+        <!-- Mute/Unmute button -->
+        <div class="mute-button" onclick="toggleMute()">
+          Mute/Unmute
+        </div>
+      </div>
+    
+      <script>
+        // Function to toggle mute/unmute state of the video
+        function toggleMute() {
+          var video = document.querySelector('video');
+          if (video.muted) {
+            video.muted = false;
+          } else {
+            video.muted = true;
+          }
+        }
+      </script>
 </body>
 </html>
+
