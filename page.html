@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+        }
+
+        #landing-page {
+            position: relative;
+        }
+
+        #languages {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOut 5s forwards;
+            opacity: 1;
+        }
+
+        .language-message {
+            display: none;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; display: none; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var languageMessages = document.querySelectorAll('.language-message');
+            var index = 0;
+
+            function displayNextMessage() {
+                if (index < languageMessages.length) {
+                    if (index > 0) {
+                        languageMessages[index - 1].style.display = 'none';
+                    }
+                    languageMessages[index].style.display = 'inline-block'; // Change display to inline-block
+                    index++;
+                    setTimeout(displayNextMessage, 500); // Change message every 0.5 second
+                }
+            }
+
+            displayNextMessage();
+        });
+    </script>
+</head>
+<body>
+    <div id="landing-page">
+        <div id="languages">
+            <div class="language-message">Hello (English)</div>
+            <div class="language-message">Hola (Spanish)</div>
+            <div class="language-message">Bonjour (French)</div>
+            <div class="language-message">Hallo (German)</div>
+            <div class="language-message">你好 (Nǐ hǎo) (Chinese)</div>
+            <div class="language-message">こんにちは (Konnichiwa) (Japanese)</div>
+            <div class="language-message">مرحبا (Marhaba) (Arabic)</div>
+            <div class="language-message">Привет (Privet) (Russian)</div>
+            <div class="language-message">नमस्ते (Namaste) (Hindi)</div>
+            <div class="language-message">Olá (Portuguese)</div>
+        </div>
+    </div>
+    <script>
+        // After the page is fully loaded, redirect to main page after 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                window.location.href = 'index.html'; // Redirect to main page
+            }, 5000); // 5000 milliseconds = 5 seconds
+        });
+    </script>
+</body>
+</html>
