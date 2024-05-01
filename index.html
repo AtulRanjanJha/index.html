@@ -42,24 +42,6 @@
             90% { opacity: 1; }
             100% { opacity: 0; display: none; }
         }
-
-        /* Responsive Design */
-        @media only screen and (max-width: 600px) {
-            body {
-                overflow: auto; /* Enable overflow for small screens */
-            }
-
-            #languages {
-                flex-direction: column; /* Stack messages vertically on small screens */
-                top: 40%; /* Adjust position */
-                padding: 20px; /* Add padding for better spacing */
-            }
-
-            .language-message {
-                display: inline-block; /* Display messages inline for better stacking */
-                margin-bottom: 10px; /* Add margin between messages */
-            }
-        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -79,13 +61,6 @@
 
             displayNextMessage();
         });
-
-        // After the page is fully loaded, redirect to main page after 5 seconds
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                window.location.href = 'page.html'; // Redirect to main page
-            }, 5000); // 5000 milliseconds = 5 seconds
-        });
     </script>
 </head>
 <body>
@@ -103,6 +78,14 @@
             <div class="language-message">Olá (Portuguese)</div>
         </div>
     </div>
+    <script>
+        // After the page is fully loaded, redirect to main page after 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                window.location.href = 'page.html'; // Redirect to main page
+            }, 5000); // 5000 milliseconds = 5 seconds
+        });
+    </script>
 </body>
 </html>
 
