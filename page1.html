@@ -144,16 +144,21 @@
       flex-direction: column;
       margin-top: 20px;
     }
+/* CSS for small screens (e.g., smartphones) */
+@media only screen and (max-width: 600px) {
+    /* Add your CSS styles for small screens here */
+}
 
-    .content-mobile {
-      display: none;
-    }
+/* CSS for medium screens (e.g., tablets) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Add your CSS styles for medium screens here */
+}
 
-    .content-desktop {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
+/* CSS for large screens (e.g., desktops) */
+@media only screen and (min-width: 1025px) {
+    /* Add your CSS styles for large screens here */
+}
+
 
     /* Keyframes for fade-in animation */
     @keyframes fadeIn {
